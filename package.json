@@ -1,0 +1,22 @@
+{
+  "name": "api-test-with-cypress",
+  "version": "1.0.0",
+  "description": "api testing with cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zubayersheba/Api-test-with-cypress.git"
+  },
+  "author": "zubayer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zubayersheba/Api-test-with-cypress/issues"
+  },
+  "homepage": "https://github.com/Zubayersheba/Api-test-with-cypress#readme",
+  "dependencies": {
+    "cypress": "^9.6.1"
+  }
+}
