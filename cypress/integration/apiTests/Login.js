@@ -4,6 +4,7 @@ const { it } = require("mocha")
 
 let testMobile = "01755883515"
 let testPassword = "14725"
+let accounts_api_url = 'https://accounts.dev-sheba.xyz'
 let jwtToken
 
 describe('Login Test cases',() => {  
@@ -13,7 +14,7 @@ describe('Login Test cases',() => {
        cy.request({
           
            method : 'POST',
-           url : 'https://accounts.dev-sheba.xyz/api/v3/profile/login',
+           url : accounts_api_url+'/api/v3/profile/login',
            //headers : {}
            body : {
                mobile : testMobile,
