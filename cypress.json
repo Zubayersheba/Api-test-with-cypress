@@ -1,1 +1,6 @@
-{}
+{
+    "env" : {
+        "account_api_url" : "https://accounts.dev-sheba.xyz"
+        
+    }
+}
