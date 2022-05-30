@@ -1,4 +1,3 @@
-//import { jwtToken } from "../apiTests/Login";
 const { it } = require("mocha")
 //<referece types ="Cypress" />
 
@@ -7,14 +6,18 @@ Test case : Create contact and check for the given name and mobile numbers are s
 Expected : Given input customer name : zubayer and number : +8801755883617 in response these data will be returned in api response after contact creation
 */
 
+//Data set for create contact//
 let contactMobile = "+8801755883617"
 let contactName = "zubayer"
 let api_url = 'https://api.dev-sheba.xyz'
+
+//Data set for login//
 let account_api_url = 'https://accounts.dev-sheba.xyz'
 let testMobile = "01755883515"
 let testPassword = "14725"
 let jwtToken
 let contact_id
+
 describe('Create contact', () => {
 
     before('Login with pre-registered user and store jwtToken to create contact', () => {
