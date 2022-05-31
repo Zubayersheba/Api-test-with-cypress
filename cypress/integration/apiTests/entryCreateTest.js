@@ -38,7 +38,7 @@ describe('Create contact', () => {
 
     });
 
-    it('Create contact and check success response', () => {
+    it('Create contact and store customer id', () => {
 
         cy.request({
 
@@ -52,36 +52,36 @@ describe('Create contact', () => {
                 name: contactName
             }
         }).then((res) => {
-            expect(res.status).to.eq(200);
-            //cy.log(JSON.stringify(res.body.customer.mobile));
             contact_id = res.body.customer.id //store customer id
 
         })
     });
     
-    it('Create contact and check customer mobile number and name', () => {
+    it('Create Due entry for a customer', () => {
 
         cy.request({
 
             method: 'POST',
-            url: api_url + '/pos/v1/customers',
+            url: api_url + '/v3/accounting/due-tracker/',
             headers: {
                 'Authorization': 'Bearer ' + jwtToken
             },
             body: {
-                mobile: contactMobile,
-                name: contactName
+                amount: 10,
+                source_type: "due",
+                account_key: contact_id,
+                contact_type:"customer",
+                contact_id:contact_id,
+                entry_at : "2022-05-22 13:13:12"
+
             }
         }).then((res) => {
-            expect(res.body.customer.name).to.eq(contactName);
-            expect(res.body.customer.mobile).to.eq(contactMobile);
-            //cy.log(JSON.stringify(res.body.customer.mobile));
-            contact_id = res.body.customer.id
+            cy.log(JSON.stringify(res.body));
 
         })
     });
 
-    afterEach('Delete the contact after each test case execution', () => {
+    after('Delete the contact after each test case execution', () => {
         cy.request({
 
             method: 'DELETE',
