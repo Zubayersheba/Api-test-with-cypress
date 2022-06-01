@@ -2,8 +2,8 @@ const { it } = require("mocha")
 //<referece types ="Cypress" />
 
 /*
-Test case : Create contact and check for the given name and mobile numbers are same in response
-Expected : Given input customer name : zubayer and number : +8801755883617 in response these data will be returned in api response after contact creation
+Test case : Create contact and then create a due entry
+Expected : Entry will be created and statuscode will be 200
 */
 
 //Data set for create contact//
