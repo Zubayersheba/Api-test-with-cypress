@@ -57,7 +57,7 @@ describe('Create contact', () => {
         })
     });
     
-    it('Create Due entry for a customer', () => {
+    it('Create Due entry for customer', () => {
 
         cy.request({
 
@@ -76,7 +76,8 @@ describe('Create contact', () => {
 
             }
         }).then((res) => {
-            cy.log(JSON.stringify(res.body));
+            //cy.log(JSON.stringify(res.body));
+            expect(res.status).to.eq(200);
 
         })
     });
