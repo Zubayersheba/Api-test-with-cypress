@@ -57,7 +57,7 @@ describe('Create contact', () => {
         })
     });
 
-    it('Create Due entry for customer', () => {
+    it('Create Deposit entry for customer', () => {
 
         cy.request({
 
@@ -68,8 +68,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: 10,
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: contact_id,
                 entry_at: "2022-05-22 13:13:12"
@@ -81,7 +81,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> send string instead of int value in amount.Result : entry will be created with given amount', () => {
+    it('Create Deposit entry for customer -> send string instead of int value in amount.Result : entry will be created with given amount', () => {
 
         cy.request({
 
@@ -92,8 +92,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: "10",
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: contact_id,
                 entry_at: "2022-05-22 13:13:12"
@@ -106,7 +106,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> send wrong source type for source_type key.Expected : code will 400 & message will "The selected source type is invalid."', () => {
+    it('Create Deposit entry for customer -> send wrong source type for source_type key.Expected : code will 400 & message will "The selected source type is invalid."', () => {
 
         cy.request({
 
@@ -118,7 +118,7 @@ describe('Create contact', () => {
             body: {
                 amount: 10,
                 source_type: "wrongsourcetype",
-                account_key: "due_sales_from_dt",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: contact_id,
                 entry_at: "2022-05-22 13:13:12"
@@ -131,7 +131,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api without amount which is a mandatory field. Expected : "code": 400 & "message": "The amount field is required."', () => {
+    it('Create Deposit entry for customer -> Call post api without amount which is a mandatory field. Expected : "code": 400 & "message": "The amount field is required."', () => {
 
         cy.request({
 
@@ -142,8 +142,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: "",
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: contact_id,
                 entry_at: "2022-05-22 13:13:12"
@@ -156,7 +156,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api without source_type which is a mandatory field. Expected : "code": 400 & "message": "The source type field is required."', () => {
+    it('Create Deposit entry for customer -> Call post api without source_type which is a mandatory field. Expected : "code": 400 & "message": "The source type field is required."', () => {
 
         cy.request({
 
@@ -168,7 +168,7 @@ describe('Create contact', () => {
             body: {
                 amount: 10,
                 source_type: "",
-                account_key: "due_sales_from_dt",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: contact_id,
                 entry_at: "2022-05-22 13:13:12"
@@ -181,7 +181,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api without contact_type which is a mandatory field. Expected : "code": 400 & "message": "The contact type field is required."', () => {
+    it('Create Deposit entry for customer -> Call post api without contact_type which is a mandatory field. Expected : "code": 400 & "message": "The contact type field is required."', () => {
 
         cy.request({
 
@@ -192,8 +192,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: 10,
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "",
                 contact_id: contact_id,
                 entry_at: "2022-05-22 13:13:12"
@@ -206,7 +206,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api without contact_id which is a mandatory field. Expected : "code": 400 & "message": "The contact id field is required."', () => {
+    it('Create Deposit entry for customer -> Call post api without contact_id which is a mandatory field. Expected : "code": 400 & "message": "The contact id field is required."', () => {
 
         cy.request({
 
@@ -217,8 +217,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: 10,
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: "",
                 entry_at: "2022-05-22 13:13:12"
@@ -231,7 +231,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api with wrong contact_id which do not belongs to this partner. Expected : "code": 500', () => {
+    it('Create Deposit entry for customer -> Call post api with wrong contact_id which do not belongs to this partner. Expected : "code": 500', () => {
 
         cy.request({
 
@@ -242,8 +242,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: 10,
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: "258",
                 entry_at: "2022-05-22 13:13:12"
@@ -256,7 +256,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api with empty entry_at mandatory field. Expected : "code": 400 & message : "The entry at field is required."', () => {
+    it('Create Deposit entry for customer -> Call post api with empty entry_at mandatory field. Expected : "code": 400 & message : "The entry at field is required."', () => {
 
         cy.request({
 
@@ -267,8 +267,8 @@ describe('Create contact', () => {
             },
             body: {
                 amount: 10,
-                source_type: "due",
-                account_key: "due_sales_from_dt",
+                source_type: "deposit",
+                account_key: "cash",
                 contact_type: "customer",
                 contact_id: contact_id,
                 entry_at: ""
@@ -281,7 +281,7 @@ describe('Create contact', () => {
 
         })
     });
-    it('Create Due entry for customer -> Call post api with future date in entry_at field. Expected : "code": 200 & Entry will be created', () => {
+    it('Create Deposit entry for customer -> Call post api with future date in entry_at field. Expected : "code": 200 & Entry will be created', () => {
 
         cy.request({
 
@@ -292,7 +292,7 @@ describe('Create contact', () => {
             },
             body: {
                 amount: 10,
-                source_type: "due",
+                source_type: "deposit",
                 account_key: "due_sales_from_dt",
                 contact_type: "customer",
                 contact_id: contact_id,

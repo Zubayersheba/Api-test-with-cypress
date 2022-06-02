@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Zubayersheba/Api-test-with-cypress#readme",
   "dependencies": {
-    "cypress": "^9.6.1"
-  }
+    "cypress": "^9.6.1",
+    "dayjs": "^1.11.2"
+  },
+  "keywords": []
 }
