@@ -1,7 +1,7 @@
 {
     "env" : {
-        "api_url" : "https://api.dev-sheba.xyz",
-        "accounts_api_url" : "https://accounts.dev-sheba.xyz",
+        "api_url" : "",
+        "accounts_api_url" : "",
         "contact_Mobile" : "+8801755883623",
         "contact_Name" : "zubayer",
         "test_Mobile" : "01755883515",
