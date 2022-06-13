@@ -2,7 +2,7 @@ const { it } = require("mocha")
 //<referece types ="Cypress" />
 
 /*
-Test case : Create contact and then create a due entry
+Test case : Create contact and then create a deposit entry
 Expected : Entry will be created and statuscode will be 200
 */
 

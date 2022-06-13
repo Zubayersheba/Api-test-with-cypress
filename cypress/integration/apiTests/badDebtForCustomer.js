@@ -2,8 +2,8 @@ const { it } = require("mocha")
 //<referece types ="Cypress" />
 
 /*
-Test case : Create contact and then create a due entry
-Expected : Entry will be created and statuscode will be 200
+Test case : Call bad debt api to clear due for a specific customer
+Expected : If specific customer have due entry user's due will be cleared and balance will be 0 by 
 */
 
 //Data set for create contact//

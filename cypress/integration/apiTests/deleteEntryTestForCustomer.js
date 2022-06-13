@@ -2,8 +2,8 @@ const { it } = require("mocha")
 //<referece types ="Cypress" />
 
 /*
-Test case : Create contact and then create a due entry
-Expected : Entry will be created and statuscode will be 200
+Test case : Delete a specific entry for a specific customer
+Expected : Entry will be deleted and statuscode will be 200
 */
 
 //Data set for create contact//
