@@ -133,7 +133,7 @@ describe('Create contact', () => {
             },
 
         }).then((res) => {
-            cy.log(JSON.stringify(res.body.data));
+            //cy.log(JSON.stringify(res.body.data));
             expect(res.body.message).to.eq("Successful");
             expect(res.body.data.list[0].contact_id).to.eq(contact_id);
             expect(res.body.data.list[0].balance).to.eq(0);
@@ -141,6 +141,72 @@ describe('Create contact', () => {
         })
 
     })
+    it('Create Due entry for customer', () => {
+
+        cy.request({
+
+            method: 'POST',
+            url: api_url + '/v3/accounting/due-tracker/',
+            headers: {
+                'Authorization': 'Bearer ' + jwtToken
+            },
+            body: {
+                amount: 10,
+                source_type: "due",
+                account_key: "due_sales_from_dt",
+                contact_type: "customer",
+                contact_id: contact_id,
+                entry_at: "2022-05-22 13:13:12"
+
+            }
+        }).then((res) => {
+            //cy.log(JSON.stringify(res.body));
+            expect(res.status).to.eq(201);
+
+        })
+    });
+    it('Create Deposit entry for customer with less tham due amount. Steps -> if customer due is 10 taka then deposit 5 taka.', () => {
+
+        cy.request({
+
+            method: 'POST',
+            url: api_url + '/v3/accounting/due-tracker/',
+            headers: {
+                'Authorization': 'Bearer ' + jwtToken
+            },
+            body: {
+                amount: 5,
+                source_type: "deposit",
+                account_key: "cash",
+                contact_type: "customer",
+                contact_id: contact_id,
+                entry_at: "2022-05-22 13:13:12"
+
+            }
+        }).then((res) => {
+            //cy.log(JSON.stringify(res.body));
+            expect(res.status).to.eq(201);
+
+        })
+    });
+    it('Call due list api to get the created customer list after creating deposit and get balance of that customer. Expected : due 5 wil be deducted by deposit balance and balance type will be 5taka due', () => {
+        cy.request({
+            method: 'GET',
+            url: api_url + '/v3/accounting/due-tracker/due-list?contact_type=customer',
+            headers: {
+                'Authorization': 'Bearer ' + jwtToken
+            },
+
+        }).then((res) => {
+            cy.log(JSON.stringify(res.body.data));
+            expect(res.body.message).to.eq("Successful");
+            expect(res.body.data.list[0].contact_id).to.eq(contact_id);
+            expect(res.body.data.list[0].balance).to.eq(5);
+            expect(res.body.data.list[0].balance_type).to.eq("account_receivable");
+        })
+
+    })
+
 
 
     after('Delete the contact after each test case execution', () => {
