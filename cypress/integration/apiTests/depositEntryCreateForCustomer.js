@@ -18,7 +18,7 @@ let testPassword = (Cypress.env('test_Password'))
 let jwtToken
 let contact_id
 
-describe('Create contact', () => {
+describe('Login', () => {
 
     before('Login with pre-registered user and store jwtToken to create contact', () => {
         cy.request({
